@@ -10,7 +10,7 @@ int climbstairs(int n)
                 return n;
             }
         for ( i = 2; i < n; i++) {
-             curr = one + two;
+            curr = one + two;
             two = one;
             one = curr;
         }
