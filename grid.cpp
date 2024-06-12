@@ -2,7 +2,7 @@
 #include<conio.h>
 #include<vector>
 using namespace std;
-int grids(vector<vector<int>> &grid , int i, int j)
+int grids(vector<vector<int>> &memo,vector<vector<int>> &grid , int i, int j)
 {
     int left;
     int up;
@@ -14,9 +14,13 @@ int grids(vector<vector<int>> &grid , int i, int j)
     {
         return 0;
     }
-    left = grids(grid,i,j-1);
-    up = grids(grid,i-1,j);
-    return left+up;
+    if(memo[i][j] != -1)
+    {
+        return memo[i][j];
+    }
+    left = grids(memo,grid,i,j-1);
+    up = grids(memo,grid,i-1,j);
+   return memo[i][j] = left+up;
 }
 int main ()
 {
@@ -24,8 +28,8 @@ int main ()
     int col = 2 ;
     vector<vector<int>> grid(rows, vector<int>(col, 0)); 
     
-    vector<vector<int>> memo(rows, vector<int>(col, 0)); 
-    cout<< "The number of ways we can travel the grid are " << grids(grid,rows-1,col-1)<<endl;
+    vector<vector<int>> memo(rows, vector<int>(col, -1)); 
+    cout<< "The number of ways we can travel the grid are " << grids(memo,grid,rows-1,col-1)<<endl;
     getch();
     return  0 ;
 }
