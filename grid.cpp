@@ -24,8 +24,8 @@ int grids(vector<vector<int>> &memo,vector<vector<int>> &grid , int i, int j)
 }
 int main ()
 {
-    int rows = 2 ;
-    int col = 2 ;
+    int rows = 3 ;
+    int col = 7 ;
     vector<vector<int>> grid(rows, vector<int>(col, 0)); 
     
     vector<vector<int>> memo(rows, vector<int>(col, -1)); 
